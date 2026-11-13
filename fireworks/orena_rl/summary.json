@@ -1,0 +1,93 @@
+{
+  "platform": "fireworks",
+  "experiment": "orena_rl",
+  "task": "ORena surgical VQA",
+  "method": "grpo",
+  "state": "JOB_STATE_COMPLETED",
+  "base_model": "Qwen/Qwen3-VL-8B-Instruct",
+  "series": {
+    "score": {
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "y": [
+        0.22314930555555557,
+        0.2283202380952381,
+        0.2314217261904762,
+        0.2628739583333333,
+        0.2347135416666667,
+        0.28509375,
+        0.2922135416666667,
+        0.3051101190476191,
+        0.2542294642857143,
+        0.31076636904761906
+      ]
+    },
+    "exact_match": {
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "y": [
+        0.190625,
+        0.19625,
+        0.195,
+        0.22875,
+        0.211875,
+        0.26375,
+        0.265625,
+        0.2775,
+        0.219375,
+        0.281875
+      ]
+    }
+  },
+  "metrics": {
+    "experiment": "orena_rl",
+    "method": "grpo",
+    "job_id": "reinforcementFineTuningJobs/fs-or1-orena-rl",
+    "state": "JOB_STATE_COMPLETED",
+    "base_model": "accounts/fireworks/models/qwen3-vl-8b-instruct",
+    "hf_model_id": "Qwen/Qwen3-VL-8B-Instruct",
+    "output_model": "accounts/purchase-j087ceepz9i/models/fs-or1-orena-rl",
+    "lora_rank": 16,
+    "learning_rate": 1e-05,
+    "max_output_tokens": 512,
+    "dataset": "fs-or1-orena-rl",
+    "dataset_size": 2000,
+    "evaluator": "evaluation-orena-focus-reward",
+    "start_score": 0.2231,
+    "final_score": 0.3108,
+    "start_exact_match": 0.1906,
+    "final_exact_match": 0.2819,
+    "no_excluded_class_final": 0.97875,
+    "no_hallucinated_class_final": 1.0,
+    "estimated_cost_usd": null,
+    "created_utc": "2026-10-02T14:26:46Z",
+    "completed_utc": "2026-10-02T15:03:46Z",
+    "wall_time_s": 2220
+  },
+  "graphs": [
+    "score_vs_step.png"
+  ],
+  "source_files": [
+    "fireworks/metrics/final_results.json"
+  ]
+}

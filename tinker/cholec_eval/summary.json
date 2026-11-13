@@ -1,0 +1,67 @@
+{
+  "platform": "tinker",
+  "experiment": "cholec_eval",
+  "task": "CholecT50",
+  "method": "eval",
+  "state": "COMPLETED",
+  "base_model": "Qwen/Qwen3.5-4B",
+  "series": {
+    "base": {
+      "labels": [
+        "triplet",
+        "instrument",
+        "verb",
+        "target",
+        "blended"
+      ],
+      "values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "sft": {
+      "labels": [
+        "triplet",
+        "instrument",
+        "verb",
+        "target",
+        "blended"
+      ],
+      "values": [
+        0.1357,
+        0.8472,
+        0.3962,
+        0.3064,
+        0.3642
+      ]
+    },
+    "rl": {
+      "labels": [
+        "triplet",
+        "instrument",
+        "verb",
+        "target",
+        "blended"
+      ],
+      "values": [
+        0.1589,
+        0.8644,
+        0.5284,
+        0.3833,
+        0.4188
+      ]
+    }
+  },
+  "metrics": {},
+  "graphs": [
+    "before_after.png"
+  ],
+  "source_files": [
+    "tinker/metrics/eval_base.json",
+    "tinker/metrics/eval_sft.json",
+    "tinker/metrics/eval_rl.json"
+  ]
+}

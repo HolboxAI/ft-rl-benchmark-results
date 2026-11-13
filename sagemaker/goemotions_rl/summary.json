@@ -1,0 +1,35 @@
+{
+  "platform": "sagemaker",
+  "experiment": "goemotions_rl",
+  "task": "GoEmotions",
+  "method": "grpo",
+  "state": "JOB_STATE_COMPLETED",
+  "base_model": "Qwen/Qwen3-0.6B",
+  "series": {},
+  "metrics": {
+    "experiment": "goemotions_rl",
+    "method": "grpo",
+    "job_id": "goemotions-rl-2026-10-02-16-30-25-068",
+    "state": "JOB_STATE_COMPLETED",
+    "base_model": "Qwen/Qwen3-0.6B",
+    "hf_model_id": "Qwen/Qwen3-0.6B",
+    "output_model": "s3://stanford-train-data/output/goemotions-rl-2026-10-02-16-30-25-068/output/model.tar.gz",
+    "lora_rank": 16,
+    "learning_rate": 1e-05,
+    "max_output_tokens": 64,
+    "dataset": "s3://stanford-train-data/goemotions/train_rl.jsonl",
+    "dataset_size": 256,
+    "steps": 256,
+    "start_jaccard": 0.0,
+    "final_jaccard": 0.0,
+    "start_micro_f1": 0.0,
+    "final_micro_f1": 0.0,
+    "estimated_cost_usd": 0.45,
+    "wall_time_s": 1605,
+    "note": "reward stayed 0 (Qwen3 thinking mode exhausted max_completion_length); no learning curve."
+  },
+  "graphs": [],
+  "source_files": [
+    "sagemaker/metrics/final_results.json"
+  ]
+}

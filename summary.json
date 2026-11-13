@@ -1,0 +1,308 @@
+{
+  "title": "ft-rl-platform-benchmark \u2014 generated graphs & metrics",
+  "generated_utc": "2026-11-13",
+  "runs": [
+    {
+      "platform": "fireworks",
+      "experiment": "orena_sft",
+      "task": "ORena surgical VQA",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [
+        "loss_vs_step.png"
+      ],
+      "series": [
+        "loss"
+      ]
+    },
+    {
+      "platform": "fireworks",
+      "experiment": "goemotions_sft",
+      "task": "GoEmotions",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [
+        "loss_vs_step.png"
+      ],
+      "series": [
+        "loss"
+      ]
+    },
+    {
+      "platform": "fireworks",
+      "experiment": "orena_rl",
+      "task": "ORena surgical VQA",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [
+        "score_vs_step.png"
+      ],
+      "series": [
+        "exact_match",
+        "score"
+      ]
+    },
+    {
+      "platform": "fireworks",
+      "experiment": "goemotions_rl",
+      "task": "GoEmotions",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [
+        "reward_vs_step.png"
+      ],
+      "series": [
+        "jaccard",
+        "micro_f1"
+      ]
+    },
+    {
+      "platform": "sagemaker",
+      "experiment": "orena_sft",
+      "task": "ORena surgical VQA",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [
+        "loss_vs_step.png"
+      ],
+      "series": [
+        "loss",
+        "mean_token_accuracy"
+      ]
+    },
+    {
+      "platform": "sagemaker",
+      "experiment": "goemotions_sft",
+      "task": "GoEmotions",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [
+        "loss_vs_step.png"
+      ],
+      "series": [
+        "loss",
+        "mean_token_accuracy"
+      ]
+    },
+    {
+      "platform": "sagemaker",
+      "experiment": "orena_rl",
+      "task": "ORena surgical VQA",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [],
+      "series": []
+    },
+    {
+      "platform": "sagemaker",
+      "experiment": "goemotions_rl",
+      "task": "GoEmotions",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [],
+      "series": []
+    },
+    {
+      "platform": "prime-intellect",
+      "experiment": "goemotions_sft",
+      "task": "GoEmotions",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [
+        "loss_vs_step.png"
+      ],
+      "series": [
+        "loss"
+      ]
+    },
+    {
+      "platform": "prime-intellect",
+      "experiment": "goemotions_rl",
+      "task": "GoEmotions",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [
+        "reward_vs_step.png"
+      ],
+      "series": [
+        "jaccard"
+      ]
+    },
+    {
+      "platform": "prime-intellect",
+      "experiment": "orena_sft",
+      "task": "ORena surgical VQA",
+      "state": "BLOCKED",
+      "graphs": [],
+      "series": []
+    },
+    {
+      "platform": "prime-intellect",
+      "experiment": "orena_rl",
+      "task": "ORena surgical VQA",
+      "state": "NOT_STARTED",
+      "graphs": [],
+      "series": []
+    },
+    {
+      "platform": "miles",
+      "experiment": "goemotions_rl",
+      "task": "GoEmotions",
+      "state": "COMPLETED",
+      "graphs": [
+        "reward_vs_step.png"
+      ],
+      "series": [
+        "jaccard",
+        "micro_f1_per_sample"
+      ]
+    },
+    {
+      "platform": "miles",
+      "experiment": "orena_rl",
+      "task": "ORena surgical VQA",
+      "state": "COMPLETED",
+      "graphs": [
+        "score_vs_step.png"
+      ],
+      "series": [
+        "exact_match",
+        "no_excluded_class",
+        "score"
+      ]
+    },
+    {
+      "platform": "miles",
+      "experiment": "cholect50_rl",
+      "task": "CholecT50",
+      "state": "COMPLETED",
+      "graphs": [
+        "reward_vs_step.png",
+        "component_f1_vs_step.png"
+      ],
+      "series": [
+        "instrument_f1",
+        "rollout_reward",
+        "target_f1",
+        "triplet_f1",
+        "val_reward",
+        "verb_f1"
+      ]
+    },
+    {
+      "platform": "tinker",
+      "experiment": "cholec_sft",
+      "task": "CholecT50",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [
+        "loss_vs_step.png"
+      ],
+      "series": [
+        "loss"
+      ]
+    },
+    {
+      "platform": "tinker",
+      "experiment": "cholec_rl",
+      "task": "CholecT50",
+      "state": "JOB_STATE_COMPLETED",
+      "graphs": [
+        "reward_vs_step.png"
+      ],
+      "series": [
+        "entropy",
+        "kl_sample_train",
+        "reward"
+      ]
+    },
+    {
+      "platform": "tinker",
+      "experiment": "cholec_eval",
+      "task": "CholecT50",
+      "state": "COMPLETED",
+      "graphs": [
+        "before_after.png"
+      ],
+      "series": [
+        "base",
+        "rl",
+        "sft"
+      ]
+    },
+    {
+      "platform": "verl",
+      "experiment": "cholec_rl",
+      "task": "CholecT50",
+      "state": "succeeded",
+      "graphs": [
+        "reward_vs_step.png"
+      ],
+      "series": [
+        "reward"
+      ]
+    },
+    {
+      "platform": "skyrl",
+      "experiment": "cholec_rl",
+      "task": "CholecT50",
+      "state": "failed",
+      "graphs": [
+        "reward_vs_step.png"
+      ],
+      "series": [
+        "reward"
+      ]
+    },
+    {
+      "platform": "trainium2",
+      "experiment": "cholect50_grpo_full_1epoch",
+      "task": "CholecT50",
+      "state": "succeeded",
+      "graphs": [
+        "reward_vs_step.png",
+        "loss_vs_step.png"
+      ],
+      "series": [
+        "loss",
+        "reward"
+      ]
+    },
+    {
+      "platform": "trainium2",
+      "experiment": "cholect50_grpo_smoke",
+      "task": "CholecT50",
+      "state": "succeeded",
+      "graphs": [
+        "reward_vs_step.png"
+      ],
+      "series": [
+        "loss",
+        "reward"
+      ]
+    },
+    {
+      "platform": "verl-tpu",
+      "experiment": "ds1000_rl",
+      "task": "DS-1000",
+      "state": "succeeded",
+      "graphs": [
+        "reward_vs_step.png"
+      ],
+      "series": [
+        "score"
+      ]
+    },
+    {
+      "platform": "titanrl",
+      "experiment": "ds1000_grpo",
+      "task": "DS-1000",
+      "state": "stopped_at_step_25",
+      "graphs": [
+        "reward_vs_step.png",
+        "loss_vs_step.png"
+      ],
+      "series": [
+        "loss",
+        "reward"
+      ]
+    }
+  ],
+  "cross_platform_charts": {
+    "goemotions_rl_jaccard": "GoEmotions RL \u2014 Jaccard by training progress",
+    "orena_rl_exact_match": "ORena RL \u2014 exact match by training progress",
+    "cholect50_reward_curves": "CholecT50 RL \u2014 blended reward by training progress",
+    "cholect50_val_reward": "CholecT50 \u2014 SFT baseline vs RL final val reward",
+    "cost_usd": "estimated cost (USD) by run",
+    "wall_time_s": "wall time (s) by run"
+  }
+}

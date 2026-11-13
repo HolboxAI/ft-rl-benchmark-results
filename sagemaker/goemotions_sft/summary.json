@@ -1,0 +1,76 @@
+{
+  "platform": "sagemaker",
+  "experiment": "goemotions_sft",
+  "task": "GoEmotions",
+  "method": "sft",
+  "state": "JOB_STATE_COMPLETED",
+  "base_model": "Qwen/Qwen3-0.6B",
+  "series": {
+    "loss": {
+      "x": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "y": [
+        3.475,
+        1.529,
+        1.32,
+        1.23,
+        1.185,
+        1.187,
+        1.191
+      ]
+    },
+    "mean_token_accuracy": {
+      "x": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "y": [
+        0.5109,
+        0.7474,
+        0.7751,
+        0.779,
+        0.7814,
+        0.783,
+        0.7818
+      ]
+    }
+  },
+  "metrics": {
+    "experiment": "goemotions_sft",
+    "method": "sft",
+    "job_id": "goemotions-sft-2026-10-02-16-07-29-859",
+    "state": "JOB_STATE_COMPLETED",
+    "base_model": "Qwen/Qwen3-0.6B",
+    "hf_model_id": "Qwen/Qwen3-0.6B",
+    "output_model": "s3://stanford-train-data/output/goemotions-sft-2026-10-02-16-07-29-859/output/model.tar.gz",
+    "lora_rank": 16,
+    "learning_rate": 0.0001,
+    "max_context_length": 512,
+    "epochs": 1,
+    "dataset": "s3://stanford-train-data/goemotions/train_sft.jsonl",
+    "dataset_size": 5000,
+    "steps": 79,
+    "final_train_loss": 1.54,
+    "estimated_cost_usd": 0.17,
+    "wall_time_s": 1174,
+    "final_logged_loss": 1.191
+  },
+  "graphs": [
+    "loss_vs_step.png"
+  ],
+  "source_files": [
+    "sagemaker/logs/goemotions_sft.log"
+  ]
+}

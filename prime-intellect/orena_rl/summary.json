@@ -1,0 +1,34 @@
+{
+  "platform": "prime-intellect",
+  "experiment": "orena_rl",
+  "task": "ORena surgical VQA",
+  "method": "grpo",
+  "state": "NOT_STARTED",
+  "base_model": "Qwen/Qwen3.5-9B",
+  "series": {},
+  "metrics": {
+    "experiment": "orena_rl",
+    "method": "grpo",
+    "job_id": null,
+    "state": "NOT_STARTED",
+    "base_model": "Qwen/Qwen3.5-9B",
+    "hf_model_id": "Qwen/Qwen3.5-9B",
+    "output_model": null,
+    "lora_rank": 16,
+    "learning_rate": 1e-05,
+    "max_output_tokens": 512,
+    "dataset_size": 128,
+    "steps": null,
+    "start_score": null,
+    "final_score": null,
+    "start_exact_match": null,
+    "final_exact_match": null,
+    "estimated_cost_usd": null,
+    "wall_time_s": null,
+    "note": "Feasible on 0.7.0 (the RL config supports [model.vlm]; rollout renders through vLLM which handles images natively). Prime Intellect can RL Qwen3.5-9B directly, unlike Fireworks which is limited to qwen3-vl-8b-instruct."
+  },
+  "graphs": [],
+  "source_files": [
+    "prime-intellect/metrics/final_results.json"
+  ]
+}

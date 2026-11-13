@@ -1,0 +1,35 @@
+{
+  "platform": "sagemaker",
+  "experiment": "orena_rl",
+  "task": "ORena surgical VQA",
+  "method": "grpo",
+  "state": "JOB_STATE_COMPLETED",
+  "base_model": "Qwen/Qwen3.5-9B",
+  "series": {},
+  "metrics": {
+    "experiment": "orena_rl",
+    "method": "grpo",
+    "job_id": "orena-rl-2026-10-02-17-18-25-972",
+    "state": "JOB_STATE_COMPLETED",
+    "base_model": "Qwen/Qwen3.5-9B",
+    "hf_model_id": "Qwen/Qwen3.5-9B",
+    "output_model": "s3://stanford-train-data/output/orena-rl-2026-10-02-17-18-25-972/output/model.tar.gz",
+    "lora_rank": 16,
+    "learning_rate": 1e-06,
+    "max_output_tokens": 128,
+    "dataset": "s3://stanford-train-data/rlvr/frames_train_rl.parquet",
+    "dataset_size": 256,
+    "steps": 50,
+    "start_score": 0.0,
+    "final_score": 0.0,
+    "start_exact_match": 0.0,
+    "final_exact_match": 0.0,
+    "estimated_cost_usd": 0.59,
+    "wall_time_s": 1747,
+    "note": "reward stayed 0 (Qwen3 thinking mode exhausted max_completion_length); no learning curve."
+  },
+  "graphs": [],
+  "source_files": [
+    "sagemaker/metrics/final_results.json"
+  ]
+}

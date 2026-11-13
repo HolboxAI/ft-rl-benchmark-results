@@ -1,0 +1,48 @@
+{
+  "platform": "verl-tpu",
+  "experiment": "ds1000_rl",
+  "task": "DS-1000",
+  "method": "grpo",
+  "state": "succeeded",
+  "base_model": "Qwen3.5-4B (text-only)",
+  "series": {
+    "score": {
+      "x": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "y": [
+        0.375,
+        0.375,
+        0.313,
+        0.25,
+        0.297,
+        0.344,
+        0.125,
+        0.094,
+        0.344,
+        0.234
+      ]
+    }
+  },
+  "metrics": {
+    "steps": 10,
+    "final_score": 0.234,
+    "wall_time": "~7 min",
+    "dataset": "DS-1000 (800 train / 128 val)"
+  },
+  "graphs": [
+    "reward_vs_step.png"
+  ],
+  "source_files": [
+    "ds1000/TPU_RL_RESULTS.md"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "platform": "prime-intellect",
+  "experiment": "orena_sft",
+  "task": "ORena surgical VQA",
+  "method": "sft",
+  "state": "BLOCKED",
+  "base_model": "Qwen/Qwen3.5-9B",
+  "series": {},
+  "metrics": {
+    "experiment": "orena_sft",
+    "method": "sft",
+    "job_id": null,
+    "state": "BLOCKED",
+    "base_model": "Qwen/Qwen3.5-9B",
+    "hf_model_id": "Qwen/Qwen3.5-9B",
+    "output_model": null,
+    "lora_rank": 64,
+    "learning_rate": 0.0001,
+    "max_context_length": 4096,
+    "epochs": 1,
+    "dataset_size": 300,
+    "steps": null,
+    "final_train_loss": null,
+    "estimated_cost_usd": null,
+    "wall_time_s": null,
+    "blocked_reason": "prime-rl 0.7.0 (the pod image) rejects [model.vlm] for SFT: the SFT data path is renderer-only and tokenizes text-only message dicts client-side ('renderer-only SFT does not support VLMs yet'). GitHub main has removed this check and supports VLM SFT, so this is version drift, not a hard platform limit."
+  },
+  "graphs": [],
+  "source_files": [
+    "prime-intellect/metrics/final_results.json"
+  ]
+}
