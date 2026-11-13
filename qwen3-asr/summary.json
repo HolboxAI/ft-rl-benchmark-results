@@ -1,0 +1,42 @@
+{
+  "experiment": "qwen3-asr-grpo-cuda-vs-trn2",
+  "task": "ASR (LibriSpeech clean/train.100, first 32 utterances)",
+  "model": "Qwen/Qwen3-ASR-0.6B (787.47M, LoRA 5.05M trainable = 0.64%)",
+  "method": "GRPO via ms-swift swift rlhf (TRL GRPOTrainer)",
+  "reward": "-0.5*(WER+CER) - 0.05*length_penalty - 0.05*repetition",
+  "num_steps": 32,
+  "platforms": {
+    "cuda": {
+      "hardware": "g6.xlarge (1x NVIDIA L4 24GB)",
+      "precision": "fp16",
+      "torch": "2.10.0+cu130",
+      "train_runtime_s": 211.28,
+      "train_runtime_hms": "3m31s",
+      "first_step_s": 27.93,
+      "steady_step_s": 5.9,
+      "peak_memory_gib": 4.45,
+      "final_loss": 2.298e-05,
+      "final_reward": -0.11055,
+      "reward_per_step": {"1": -0.1131, "5": -0.1220, "10": -0.1149, "15": -0.1222, "20": -0.2435, "25": -0.1243, "30": -0.1299, "32": -0.1105}
+    },
+    "trainium2": {
+      "hardware": "trn2.48xlarge (64 NeuronCores)",
+      "precision": "bf16",
+      "torch": "2.14.0 + torch-neuronx 2.14.3.0.1",
+      "train_runtime_s": 16040.88,
+      "train_runtime_hms": "4h27m21s",
+      "first_step_s": 2017.19,
+      "step_min_s": 67,
+      "step_max_s": 1297,
+      "avg_step_s": 501,
+      "final_loss": -2.56e-05,
+      "final_reward": -0.11055,
+      "reward_per_step": {"1": -0.11311, "5": -0.12391, "10": -0.11348, "15": -0.12186, "20": -0.24350, "25": -0.12301, "30": -0.13148, "32": -0.11055}
+    }
+  },
+  "comparison": {
+    "wall_clock_ratio": 75.9,
+    "final_reward_identical": true,
+    "root_cause": "per-shape NEFF graph recompilation on variable-length completions (compilation overhead, not compute)"
+  }
+}
