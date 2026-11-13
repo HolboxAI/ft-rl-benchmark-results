@@ -295,6 +295,39 @@
         "loss",
         "reward"
       ]
+    },
+    {
+      "platform": "skyrl-tpu",
+      "experiment": "cholect50",
+      "task": "CholecT50",
+      "state": "collapsed",
+      "graphs": [
+        "reward_vs_step_gpu_tpu.png"
+      ],
+      "series": [
+        "reward_gpu",
+        "reward_tpu"
+      ]
+    },
+    {
+      "platform": "skyrl-tpu",
+      "experiment": "ds1000",
+      "task": "DS-1000",
+      "state": "completed",
+      "graphs": [
+        "reward_vs_step.png",
+        "pass_at_8_vs_step.png",
+        "eval_pass_rate.png",
+        "training_health.png"
+      ],
+      "series": [
+        "kl",
+        "minutes_per_step",
+        "pass_at_8",
+        "reply_tokens",
+        "train_reward",
+        "val_pass_at_1"
+      ]
     }
   ],
   "cross_platform_charts": {

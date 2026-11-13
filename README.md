@@ -32,7 +32,7 @@ generate_all.py                  rebuilds everything from the source repo
 ## Platforms
 
 Fireworks, SageMaker, Prime Intellect, Miles, Tinker, verl, SkyRL, Trainium2,
-Baseten, Together AI, verl-TPU (Cloud TPU), TitanRL.
+Baseten, Together AI, verl-TPU (Cloud TPU), SkyRL-TPU (Cloud TPU), TitanRL.
 
 Baseten and Together AI produced no data (blocked / not feasible). SageMaker RL
 and Prime Intellect ORena produced no learning curve (reward stayed 0 or blocked).
@@ -55,6 +55,11 @@ Cross-platform charts (in `cross-platform/`):
 - `cholect50_reward_curves.png` — blended reward by progress (verl, Miles, SkyRL, Tinker).
 - `cholect50_val_reward.png` — SFT baseline vs RL final.
 - `cost_usd.png`, `wall_time_s.png` — cost and wall time by run.
+
+SkyRL-TPU (Cloud TPU v6e-8) charts:
+
+- `skyrl-tpu/cholect50/reward_vs_step_gpu_tpu.png` — GPU vs TPU train reward (TPU collapses after step 1).
+- `skyrl-tpu/ds1000/` — train reward, pass@8, val pass@1 (28.2% → 35.0%), and training health (KL + reply length).
 
 ## Rebuild
 

@@ -1,0 +1,104 @@
+{
+  "platform": "skyrl-tpu",
+  "experiment": "cholect50",
+  "task": "CholecT50",
+  "method": "grpo",
+  "state": "collapsed",
+  "base_model": "Qwen/Qwen3.5-4B",
+  "series": {
+    "reward_gpu": {
+      "x": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "y": [
+        0.093,
+        0.092,
+        0.154,
+        0.061,
+        0.011,
+        0.076,
+        0.221,
+        0.181,
+        0.186,
+        0.208,
+        0.248,
+        0.181,
+        0.306,
+        0.0,
+        0.0
+      ]
+    },
+    "reward_tpu": {
+      "x": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "y": [
+        0.292,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "metrics": {
+    "hardware": "Cloud TPU v6e-8 (Trillium, 8 chips)",
+    "stack": "SkyRL 2c54cefc + skyrl-tpu patch, TorchTPU 0.2.0",
+    "val_reward_before": {
+      "gpu": 0.329,
+      "tpu": 0.379
+    },
+    "val_reward_after": {
+      "gpu": null,
+      "tpu": 0.0
+    },
+    "note": "TPU run collapses after its first update; all 128 rollouts score 0 from step 2."
+  },
+  "graphs": [
+    "reward_vs_step_gpu_tpu.png"
+  ],
+  "source_files": [
+    "skyrl-tpu/README.md",
+    "skyrl-tpu/config/gpu_reference_final_results.json"
+  ]
+}

@@ -663,6 +663,98 @@ def build_titanrl(src, root):
 
 
 # --------------------------------------------------------------------------- #
+# SkyRL on Cloud TPU (skyrl-tpu) — CholecT50 + DS-1000
+# Per-step numbers are transcribed from skyrl-tpu/*/README.md; the raw
+# metrics.jsonl lives in GCS and is not committed to the source repo.
+# --------------------------------------------------------------------------- #
+def build_skyrl_tpu_cholect50(src, root):
+    p = "skyrl-tpu"
+    # GPU run (SkyRL on g5.12xlarge) vs TPU run (SkyRL on v6e-8), steps 1..16.
+    gpu = [0.093, 0.092, 0.154, 0.061, 0.011, 0.076, 0.221, 0.181, 0.186, 0.208,
+           0.248, 0.181, 0.306, 0.0, 0.0]           # steps 1..15 (step 16 not measured)
+    tpu = [0.292, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    s = blank_summary(p, "cholect50", "grpo", "collapsed", "Qwen/Qwen3.5-4B")
+    s["metrics"] = {
+        "hardware": "Cloud TPU v6e-8 (Trillium, 8 chips)",
+        "stack": "SkyRL 2c54cefc + skyrl-tpu patch, TorchTPU 0.2.0",
+        "val_reward_before": {"gpu": 0.329, "tpu": 0.379},
+        "val_reward_after": {"gpu": None, "tpu": 0.0},
+        "note": "TPU run collapses after its first update; all 128 rollouts score 0 from step 2.",
+    }
+    s["series"]["reward_gpu"] = series(range(1, len(gpu) + 1), gpu)
+    s["series"]["reward_tpu"] = series(range(1, len(tpu) + 1), tpu)
+    s["source_files"] += ["skyrl-tpu/README.md", "skyrl-tpu/config/gpu_reference_final_results.json"]
+    plot_curve(s, os.path.join(root, p, "cholect50"), "reward_vs_step_gpu_tpu.png",
+               "SkyRL CholecT50 — train reward: GPU vs Cloud TPU", "step", "mean reward (128 rollouts)",
+               [(range(1, len(gpu) + 1), gpu, CAT[0], "GPU (g5.12xlarge)"),
+                (range(1, len(tpu) + 1), tpu, CAT[1], "TPU (v6e-8)")])
+    write_json(os.path.join(root, p, "cholect50", "summary.json"), s)
+    return [s]
+
+
+def build_skyrl_tpu_ds1000(src, root):
+    p = "skyrl-tpu"
+    # 20-step GRPO run; table from skyrl-tpu/skyrl_ds1000/README.md.
+    steps = list(range(1, 21))
+    train_reward = [0.156, 0.180, 0.305, 0.203, 0.336, 0.227, 0.211, 0.289, 0.234, 0.383,
+                    0.305, 0.328, 0.234, 0.195, 0.320, 0.352, 0.391, 0.289, 0.344, 0.219]
+    pass_at_8 = [0.44, 0.44, 0.63, 0.44, 0.69, 0.50, 0.50, 0.63, 0.50, 0.69,
+                 0.56, 0.75, 0.63, 0.44, 0.50, 0.63, 0.56, 0.69, 0.56, 0.56]
+    kl = [0.000, 0.001, 0.002, 0.003, 0.007, 0.004, 0.007, 0.007, 0.008, 0.010,
+          0.020, 0.021, 0.021, 0.021, 0.026, 0.026, 0.039, 0.047, 0.042, 0.054]
+    reply_tokens = [155, 82, 116, 161, 85, 128, 131, 58, 103, 104,
+                    134, 113, 93, 89, 163, 108, 119, 131, 104, 145]
+    minutes = [31.4, 37.7, 35.6, 40.5, 35.6, 39.6, 39.9, 33.3, 39.2, 40.5,
+               33.6, 42.4, 37.6, 36.3, 44.8, 40.7, 38.8, 48.1, 39.2, 41.2]
+    val_steps = [0, 10, 20]
+    val_pass = [0.282, 0.340, 0.350]  # 58/206, 70/206, 72/206
+
+    s = blank_summary(p, "ds1000", "grpo", "completed", "Qwen/Qwen3.5-4B (thinking off)")
+    s["metrics"] = {
+        "hardware": "Cloud TPU v6e-8 (Trillium, 8 chips)",
+        "stack": "SkyRL 2c54cefc + skyrl-tpu patch, TorchTPU 0.2.0, transformers 5.16.1",
+        "dataset": "DS-1000 (794 train / 206 val)",
+        "grpo": "16 problems x 8 samples/step, lr 1e-6, KL 0.001, replies <= 512 tokens, temp 1.0",
+        "val_pass_at_1": {"before": 0.282, "step_10": 0.340, "step_20": 0.350},
+        "note": "train reward mean steps 1-5 = 0.236, steps 16-20 = 0.319; no collapse (KL rises slowly).",
+    }
+    s["series"]["train_reward"] = series(steps, train_reward)
+    s["series"]["pass_at_8"] = series(steps, pass_at_8)
+    s["series"]["kl"] = series(steps, kl)
+    s["series"]["reply_tokens"] = series(steps, reply_tokens)
+    s["series"]["minutes_per_step"] = series(steps, minutes)
+    s["series"]["val_pass_at_1"] = series(val_steps, val_pass)
+    s["source_files"].append("skyrl-tpu/skyrl_ds1000/README.md")
+
+    d = os.path.join(root, p, "ds1000")
+    plot_curve(s, d, "reward_vs_step.png",
+               "SkyRL DS-1000 on TPU — train reward", "step", "mean reward",
+               [(steps, train_reward, BLUE, "train reward (raw)"),
+                (steps, rolling(train_reward, 5), CAT[1], "rolling-5")])
+    plot_curve(s, d, "pass_at_8_vs_step.png",
+               "SkyRL DS-1000 on TPU — pass@8", "step", "share of 16 problems with a pass",
+               [(steps, pass_at_8, CAT[0], "pass@8")])
+    plot_curve(s, d, "eval_pass_rate.png",
+               "SkyRL DS-1000 on TPU — val pass@1", "step", "val pass@1 (206 problems, greedy)",
+               [(val_steps, val_pass, CAT[2], "pass@1")])
+    # training health small multiples (KL + reply length)
+    fig, axes = plt.subplots(2, 1, figsize=(8, 6), sharex=True)
+    for ax in axes:
+        style_ax(ax)
+    line(axes[0], steps, kl, CAT[0], label="KL to reference")
+    axes[0].set_ylabel("KL")
+    axes[0].set_title("SkyRL DS-1000 on TPU — training health")
+    line(axes[1], steps, reply_tokens, CAT[1], label="mean reply tokens")
+    axes[1].set_ylabel("reply tokens")
+    axes[1].set_xlabel("step")
+    out = os.path.join(d, "training_health.png")
+    save(fig, out)
+    s["graphs"].append(os.path.basename(out))
+    write_json(os.path.join(d, "summary.json"), s)
+    return [s]
+
+
+# --------------------------------------------------------------------------- #
 # Cross-platform overlays
 # --------------------------------------------------------------------------- #
 def build_cross_platform(src, root):
@@ -845,6 +937,10 @@ RAW_FILES = [
     "trainium2/metrics/run_manifest.json", "trainium2/logs/run_grpo.log",
     "trainium2/logs/run_grpo_1792850149.log",
     "ds1000/TPU_RL_RESULTS.md", "titanrl/ds1000/ds1000_train.log",
+    "skyrl-tpu/README.md", "skyrl-tpu/skyrl_ds1000/README.md",
+    "skyrl-tpu/config/gpu_reference_final_results.json",
+    "skyrl-tpu/config/gpu_reference_run_manifest.json",
+    "skyrl-tpu/skyrl_ds1000/check_results/summary.json",
 ]
 
 
@@ -878,6 +974,8 @@ def main():
     all_runs += build_trainium2(src, root)
     all_runs += build_verl_tpu(src, root)
     all_runs += build_titanrl(src, root)
+    all_runs += build_skyrl_tpu_cholect50(src, root)
+    all_runs += build_skyrl_tpu_ds1000(src, root)
     cross = build_cross_platform(src, root)
     copy_raw(src, root)
 
