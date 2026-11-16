@@ -574,7 +574,7 @@ def build_skyrl(src, root):
         s["series"]["reward"] = series(range(len(rc)), rc)
     s["source_files"].append(f"{p}/metrics/final_results.json")
     plot_curve(s, os.path.join(root, p, "cholec_rl"), "reward_vs_step.png",
-               "SkyRL / cholec_rl — blended reward (collapsed to 0)", "step", "blended reward",
+               "SkyRL / cholec_rl — blended reward", "step", "blended reward",
                [(range(len(rc)), rc, BLUE, "reward")])
     write_json(os.path.join(root, p, "cholec_rl", "summary.json"), s)
     return [s]

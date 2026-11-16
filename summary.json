@@ -235,7 +235,7 @@
       "platform": "skyrl",
       "experiment": "cholec_rl",
       "task": "CholecT50",
-      "state": "failed",
+      "state": "succeeded",
       "graphs": [
         "reward_vs_step.png"
       ],
